@@ -91,9 +91,9 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ0ZmExZmIzNTM0MTk3NjgxOGQ2ZGQiLCJpYXQiOjE2ODIyNDYwODZ9.d6W3TpRJbeUaSGoFL8uPMQVDMP7jUu1o4wKOEqMyRmE
 
 {
-  "name": "Tập trung",
-  "type": "work",
-  "image": "https://res.cloudinary.com/drmurhshg/image/upload/v1685538283/work_c40yon.jpg"
+  "name": "Edm",
+  "type": "edm",
+  "image": "https://res.cloudinary.com/drmurhshg/image/upload/v1685970104/edm_qul3o8.jpg"
 }
 
 ###Get Types
@@ -107,5 +107,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ0Z
 
 ###Get Playlists By Type
 GET http://localhost:3000/api/playlists/get-by-type/top
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ0ZmExZmIzNTM0MTk3NjgxOGQ2ZGQiLCJpYXQiOjE2ODIyNDYwODZ9.d6W3TpRJbeUaSGoFL8uPMQVDMP7jUu1o4wKOEqMyRmE
+
+###Search
+GET http://localhost:3000/api/search
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ0ZmExZmIzNTM0MTk3NjgxOGQ2ZGQiLCJpYXQiOjE2ODIyNDYwODZ9.d6W3TpRJbeUaSGoFL8uPMQVDMP7jUu1o4wKOEqMyRmE

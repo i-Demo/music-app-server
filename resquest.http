@@ -1,0 +1,111 @@
+GET http://localhost:3000
+
+### Register
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "adminasdas@gmail.com",
+  "password": "123456@",
+  "name": "i Demo"
+}
+
+### Login
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "123456@"
+}
+
+### loadUser
+GET http://localhost:3000/api/auth
+Content-Type: application/xml
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDM2NjExMzI0NWNkM2Q0MTBhMDM4ZmEiLCJpYXQiOjE2ODEyODczMjJ9.fj2qEY-81w3TbJXdlLaDCxHC9u4OCejOz3JCNLv7ekE
+
+### update Profile
+PUT http://localhost:3000/api/auth/updateProfile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQzYjFmNDEyZDRhYzQwNjViODU5NWEiLCJpYXQiOjE2ODIxNTgwNjh9.wHjhAdlcIqBePqX5LccNuT-XB6H_yBjurDX6MRvucno
+
+{
+  # "avatar": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA80A…AAIAYhGYAAAAAACKZ/T+ePrBVBh21OQAAAABJRU5ErkJggg==",
+  "email": "test@gmail.com",
+  "name": "Hoai Vi",
+  "gender": "male",
+  "birthday": "2000-04-09",
+  "date": "06"
+}
+
+###Create Song
+POST http://localhost:3000/api/songs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ0ZmExZmIzNTM0MTk3NjgxOGQ2ZGQiLCJpYXQiOjE2ODIyNDYwODZ9.d6W3TpRJbeUaSGoFL8uPMQVDMP7jUu1o4wKOEqMyRmE
+
+{
+  "name": "test",
+  "song": "",
+  "artist": "i Demo",
+  "image": "https://res.cloudinary.com/drmurhshg/image/upload/v1682323027/cld-sample-5.jpg",
+  "duration": "30"
+}
+
+###Update Song
+PUT http://localhost:3000/api/songs/update-song/6446604a9d57fb20e36367ed
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ0ZmExZmIzNTM0MTk3NjgxOGQ2ZGQiLCJpYXQiOjE2ODIyNDYwODZ9.d6W3TpRJbeUaSGoFL8uPMQVDMP7jUu1o4wKOEqMyRmE
+
+{
+  "country": "vietnam"
+}
+
+###GET New Song
+GET http://localhost:3000/api/songs/new-song
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ0ZmExZmIzNTM0MTk3NjgxOGQ2ZGQiLCJpYXQiOjE2ODIyNDYwODZ9.d6W3TpRJbeUaSGoFL8uPMQVDMP7jUu1o4wKOEqMyRmE
+
+{
+  "query": {
+    "country": "vietnam",
+    "limit": 12
+  }
+}
+
+###Create Playlist
+POST http://localhost:3000/api/playlists
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ0ZmExZmIzNTM0MTk3NjgxOGQ2ZGQiLCJpYXQiOjE2ODIyNDYwODZ9.d6W3TpRJbeUaSGoFL8uPMQVDMP7jUu1o4wKOEqMyRmE
+
+{
+  "name": "test",
+  "song": "",
+  "artist": "i Demo",
+  "image": "https://res.cloudinary.com/drmurhshg/image/upload/v1682323027/cld-sample-5.jpg",
+  "duration": "30"
+}
+
+###Create Type
+POST http://localhost:3000/api/types
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ0ZmExZmIzNTM0MTk3NjgxOGQ2ZGQiLCJpYXQiOjE2ODIyNDYwODZ9.d6W3TpRJbeUaSGoFL8uPMQVDMP7jUu1o4wKOEqMyRmE
+
+{
+  "name": "Tập trung",
+  "type": "work",
+  "image": "https://res.cloudinary.com/drmurhshg/image/upload/v1685538283/work_c40yon.jpg"
+}
+
+###Get Types
+GET http://localhost:3000/api/types
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ0ZmExZmIzNTM0MTk3NjgxOGQ2ZGQiLCJpYXQiOjE2ODIyNDYwODZ9.d6W3TpRJbeUaSGoFL8uPMQVDMP7jUu1o4wKOEqMyRmE
+
+{
+  "name": "for-you"
+}
+
+###Get Playlists By Type
+GET http://localhost:3000/api/playlists/get-by-type/top
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ0ZmExZmIzNTM0MTk3NjgxOGQ2ZGQiLCJpYXQiOjE2ODIyNDYwODZ9.d6W3TpRJbeUaSGoFL8uPMQVDMP7jUu1o4wKOEqMyRmE

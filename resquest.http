@@ -1,7 +1,7 @@
 GET http://localhost:3000
 
 ### Register
-POST http://localhost:3000/api/auth/register
+POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
@@ -11,12 +11,12 @@ Content-Type: application/json
 }
 
 ### Login
-POST http://localhost:3000/api/auth/login
+POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
   "email": "admin@gmail.com",
-  "password": "123456@"
+  "password": "123456@",
 }
 
 ### loadUser

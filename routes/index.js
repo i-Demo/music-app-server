@@ -10,6 +10,9 @@ function route(app) {
     app.use("/api/playlists", playlistRouter);
     app.use("/api/search", searchRouter);
     app.use("/api/types", typeRouter);
+    app.get("/api", (req, res, next) => {
+        res.status(200).json("Server Live");
+    });
     // app.use("/api/upload")
 }
 

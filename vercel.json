@@ -12,6 +12,12 @@
             "dest": "/"
         }
     ],
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/"
+        }
+    ],
     "headers": [
         {
             "source": "/api/(.*)",

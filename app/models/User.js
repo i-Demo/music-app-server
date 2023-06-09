@@ -12,7 +12,7 @@ const UserSchema = new Schema(
         birthday: { type: String, default: "" },
         likedSongs: { type: [Object], default: [] },
         playlists: { type: [String], default: [] },
-        myPlaylists: { type: [Object], default: [] },
+        myPlaylists: { type: [{ _id: String, name: String }], default: [] },
         publicPlaylists: { type: [String], default: [] },
         isAdmin: { type: Boolean, default: false },
     },

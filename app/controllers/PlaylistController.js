@@ -67,25 +67,36 @@ class PlaylistController {
             });
             const { error } = schema.validate(req.body);
             if (error) return res.status(400).send({ success: false, message: error.details[0].message });
+
             const playlist = await Playlist.findById(req.params.id);
             if (!playlist) return res.status(404).send({ success: false, message: "Playlist not found" });
-
             const user = await User.findById(req.userId);
+
             if (!user._id.equals(playlist.user))
                 return res.status(403).send({ success: false, message: "You don't have access to edit!" });
 
-            const { image } = req.body;
+            const { image, name, desc } = req.body;
             if (image === playlist.image || !image) {
                 playlist.image = req.body.image;
             } else {
                 const url = await uploadImage(image, playlist._id);
                 playlist.image = url;
             }
-            playlist.name = req.body.name;
-            playlist.desc = req.body.desc;
+            if (name !== playlist.name) {
+                playlist.name = req.body.name;
+                const index = user.myPlaylists.findIndex((myPlaylist) => myPlaylist._id === req.params.id);
+                user.myPlaylists[index].name = name;
+            }
+            console.log(user);
+            playlist.desc = desc;
             const newPlaylist = await playlist.save();
-
-            res.status(200).send({ success: true, message: "Updated successfully", user: user, playlist: newPlaylist });
+            const newUser = await user.save();
+            res.status(200).send({
+                success: true,
+                message: "Updated successfully",
+                user: newUser,
+                playlist: newPlaylist,
+            });
         } catch (error) {
             console.log(error);
             res.status(500).json({ success: false, message: "Internal Server Error" });
@@ -280,7 +291,7 @@ class PlaylistController {
                 return res.status(403).json({ success: false, message: "You don't have access to delete!" });
 
             const index = data[0].playlists.indexOf(req.params.id);
-            const index1 = data[0].myPlaylists.indexOf(req.params.id);
+            const index1 = data[0].myPlaylists.findIndex((myPlaylist) => myPlaylist._id === req.params.id);
             const index2 = data[0].publicPlaylists.indexOf(req.params.id);
             data[0].playlists.splice(index, 1);
             data[0].myPlaylists.splice(index1, 1);

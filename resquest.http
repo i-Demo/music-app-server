@@ -1,7 +1,7 @@
 GET http://localhost:3000
 
 ### Register
-POST http://localhost:5000/api/auth/register
+POST https://music-app-r7c8.onrender.com/api/auth/register
 Content-Type: application/json
 
 {
@@ -12,6 +12,10 @@ Content-Type: application/json
 
 ### Login
 POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+### Login
+POST https://music-app-r7c8.onrender.com/api/auth/login
 Content-Type: application/json
 
 {
@@ -61,7 +65,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ0Z
 }
 
 ###GET New Song
-GET http://localhost:3000/api/songs/new-song
+GET http://localhost:5000/api/songs/new-song
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ0ZmExZmIzNTM0MTk3NjgxOGQ2ZGQiLCJpYXQiOjE2ODIyNDYwODZ9.d6W3TpRJbeUaSGoFL8uPMQVDMP7jUu1o4wKOEqMyRmE
 

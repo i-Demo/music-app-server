@@ -26,6 +26,7 @@ class PlaylistController {
             }
             const { name, isPublic } = req.body;
             const newPlaylist = new Playlist({
+                ...req.body,
                 _id: new mongoose.Types.ObjectId().toHexString(),
                 name: name,
                 user: req.userId,
@@ -34,7 +35,7 @@ class PlaylistController {
             });
             user.myPlaylists.unshift({ _id: newPlaylist._id, name: newPlaylist.name });
             user.playlists.unshift(newPlaylist._id);
-            if (isPublic) user.publicPlaylists.unshift(newPlaylist._id);
+            if (isPublic || user.isAdmin) user.publicPlaylists.unshift(newPlaylist._id);
             const { image } = req.body;
             if (image) {
                 await uploadImage(image, newPlaylist._id).then((url) => {
@@ -168,7 +169,7 @@ class PlaylistController {
     async getRandomPlaylists(req, res, next) {
         try {
             const { limit, ...params } = req.query;
-            const size = Number(limit)
+            const size = Number(limit);
             const playlists = await Playlist.aggregate([{ $match: params }, { $sample: { size: size } }]).sort({
                 _id: -1,
             });

@@ -2,9 +2,9 @@ const cloudinary = require("cloudinary").v2;
 
 // Configuration 
 cloudinary.config({
-    cloud_name: "dzdqry9tt",
-    api_key: "387468886483457",
-    api_secret: "ysJaP-ntXbvuECyx_VIbNohZaGk"
+    cloud_name: `${process.env.CLOUD_NAME}`,
+    api_key: `${process.env.CLOUD_API_KEY}`,
+    api_secret: `${process.env.CLOUD_API_SECRET}`
   });
 
 // Config

@@ -7,8 +7,8 @@
         "node": "18.x"
     },
     "scripts": {
-        "server": "nodemon api/index",
-        "start": "node api/index.js",
+        "start": "node index.js",
+        "server": "nodemon index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "i Demo",

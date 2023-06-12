@@ -31,9 +31,9 @@ class AuthController {
             const user = await User.findOne(req.query);
             //Check for existing user
             if (user) {
-                return res.status(400).json({ success: false, message: "Email can be used" });
+                return res.status(400).json({ success: false, message: "Email is already exist" });
             }
-            res.status(200).json({ success: true, message: "Email is already exist" });
+            res.status(200).json({ success: true, message: "Email can be used" });
         } catch (error) {
             console.log(error);
             res.status(500).json({ success: false, message: "Internal Server Error" });

@@ -25,7 +25,7 @@ const validate = (user) => {
     const schema = joi.object({
         email: joi.string().email().required(),
         password: joi.string().required(),
-        name: joi.string(),
+        name: joi.string().required(),
         birthday: joi.string(),
         gender: joi.string().valid("male", "female", "other"),
     });

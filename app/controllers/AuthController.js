@@ -1,6 +1,7 @@
 const { User, validate } = require("../models/User");
 const jwt = require("jsonwebtoken");
 const argon2 = require("argon2");
+const joi = require("joi");
 const uploadImage = require("../cloudinary/uploadImage");
 
 class AuthController {
@@ -11,6 +12,27 @@ class AuthController {
             const user = await User.findById(req.userId).select("-password -__v -updatedAt");
             if (!user) return res.status(400).json({ success: false, message: "User not found" });
             res.status(200).json({ success: true, user });
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ success: false, message: "Internal Server Error" });
+        }
+    }
+
+    // @ [GET] api/auth/check-mail
+    // access Public
+    async checkMail(req, res, next) {
+        const schema = joi.object({
+            email: joi.string().email().required(),
+        });
+        const { error } = schema.validate(req.query);
+        if (error) return res.status(400).send({ message: error.details[0].message });
+
+        try {
+            const user = await User.findOne(req.query);
+            //Check for existing user
+            if (user) {
+                return res.status(400).json({ success: false, message: "Email is already exist" });
+            }
         } catch (error) {
             console.log(error);
             res.status(500).json({ success: false, message: "Internal Server Error" });

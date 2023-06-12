@@ -2,13 +2,18 @@ const express = require("express");
 const router = express.Router();
 const AuthController = require("../app/controllers/AuthController.js");
 const authMiddleware = require("../app/middleware/authMiddleware.js");
-// @ [GET] api/auth
+
+// @ [GET] api/auth/check-mail
 // access Public
-router.get("/", authMiddleware, AuthController.loadUser);
+router.get("/check-mail", AuthController.checkMail);
 
 // @ [GET] api/auth
 // access Public
 router.get("/:id", authMiddleware, AuthController.getUser);
+
+// @ [GET] api/auth
+// access Public
+router.get("/", authMiddleware, AuthController.loadUser);
 
 // @ [POST] api/auth/register
 // access Public

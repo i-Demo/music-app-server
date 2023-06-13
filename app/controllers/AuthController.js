@@ -46,8 +46,8 @@ class AuthController {
         // Validate Data
         const schema = joi.object({
             email: joi.string().email().required(),
-            password: joi.string().password().required(),
-            name: joi.string().name().required(),
+            password: joi.string().required(),
+            name: joi.string().required(),
         });
         const { error } = schema.validate(req.body);
         if (error) return res.status(400).json({ success: false, message: error.details[0].message });
@@ -88,7 +88,7 @@ class AuthController {
     async login(req, res, next) {
         const schema = joi.object({
             email: joi.string().email().required(),
-            password: joi.string().password().required(),
+            password: joi.string().required(),
         });
         // Validate Data
         const { error } = schema.validate(req.body);

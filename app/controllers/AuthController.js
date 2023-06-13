@@ -1,4 +1,4 @@
-const { User, validate } = require("../models/User");
+const { User } = require("../models/User");
 const jwt = require("jsonwebtoken");
 const argon2 = require("argon2");
 const joi = require("joi");
@@ -44,7 +44,12 @@ class AuthController {
     // access Public
     async register(req, res, next) {
         // Validate Data
-        const { error } = validate(req.body);
+        const schema = joi.object({
+            email: joi.string().email().required(),
+            password: joi.string().password().required(),
+            name: joi.string().name().required(),
+        });
+        const { error } = schema.validate(req.body);
         if (error) return res.status(400).json({ success: false, message: error.details[0].message });
 
         const { email, password } = req.body;
@@ -81,8 +86,12 @@ class AuthController {
     // @ [POST] api/auth/login
     // access Public
     async login(req, res, next) {
+        const schema = joi.object({
+            email: joi.string().email().required(),
+            password: joi.string().password().required(),
+        });
         // Validate Data
-        const { error } = validate(req.body);
+        const { error } = schema.validate(req.body);
         if (error) return res.status(400).json({ success: false, message: error.details[0].message });
 
         const { email, password } = req.body;

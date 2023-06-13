@@ -9,6 +9,7 @@ const SongSchema = new Schema(
         song: { type: String, required: true },
         artist: { type: String, required: true },
         image: { type: String, required: true },
+        album: { type: { _id: String, name: String } },
         duration: { type: Number, required: true },
         lyrics: { type: String, default: "" },
         country: { type: String, default: "" },

@@ -1,4 +1,5 @@
-GET http://localhost:3000
+GET http://localhost:5000/api/auth
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDM2NjExMzI0NWNkM2Q0MTBhMDM4ZmEiLCJpYXQiOjE2ODEyODczMjJ9.fj2qEY-81w3TbJXdlLaDCxHC9u4OCejOz3JCNLv7ekE
 
 ### Register
 POST https://demo-music.vercel.app/api/auth/register
@@ -23,11 +24,6 @@ Content-Type: application/json
 GET  http://localhost:5000/api/auth/check-mail
 Content-Type: application/json
 
-{
-  "query": {
-    "email": "a35@gmail.com"
-  }
-}
 ### Login
 POST http://localhost:5000/api/auth/login
 Content-Type: application/json
@@ -42,10 +38,9 @@ Content-Type: application/json
 }
 
 ### loadUser
-GET http://localhost:3000/api/auth
+GET http://localhost:5000/api/auth
 Content-Type: application/xml
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDM2NjExMzI0NWNkM2Q0MTBhMDM4ZmEiLCJpYXQiOjE2ODEyODczMjJ9.fj2qEY-81w3TbJXdlLaDCxHC9u4OCejOz3JCNLv7ekE
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDM1MTk2ZGM1OTM1MmVkNDgxYjRlNjMiLCJpYXQiOjE2ODY1NTc4OTh9.FuhhsMNDFgj8kNx3LG4juq1-H6gu-fjOMCngBPxCSf0
 ### update Profile
 PUT http://localhost:3000/api/auth/updateProfile
 Content-Type: application/json

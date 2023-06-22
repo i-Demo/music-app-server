@@ -99,12 +99,11 @@ class AuthController {
         try {
             let user = await User.findOne({ email });
             // Check for existing user
-            if (!user) return res.status(400).json({ success: false, message: "Missing username and/or password" });
+            if (!user) return res.status(401).json({ success: false, message: "Mail or Password Invalid" });
 
             // Check for incorrect password
             const passwordValid = await argon2.verify(user.password, password);
-            if (!passwordValid)
-                return res.status(400).json({ success: false, message: "Missing username and/or password" });
+            if (!passwordValid) return res.status(401).json({ success: false, message: "Mail or Password Invalid" });
 
             // Returning Token
             const accessToken = jwt.sign({ userId: user._id }, process.env.ACCESS_TOKEN_KEY);

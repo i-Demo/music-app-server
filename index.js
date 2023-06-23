@@ -11,6 +11,7 @@ db.connect();
 app.use(express.json({ limit: "300mb" }));
 app.use(express.urlencoded({ extended: false, limit: "300mb" }));
 app.use(cors());
+app.options("*", cors());
 // Routes init
 route(app);
 
